@@ -30,7 +30,7 @@ _the both attributes `data-audio` and `data-annotations` are mandatory_
 
 The data file must have the following format (values are in seconds):
 
-```json
+```javascript
 [
   {
     "start": 1.2,
