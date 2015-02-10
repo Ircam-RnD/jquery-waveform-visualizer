@@ -1,4 +1,4 @@
-JQUERY WAVEFORM VISUALIZER
+jQuery waveform visualizer
 ===================================================
 
 _A simple jQuery plugin build around [`waves.js`](https://github.com/Ircam-RnD/waves), to visualize waveform and metadata._
@@ -81,6 +81,6 @@ $('#timeline').waveformVisualizer({
 
 ## Example
 
-to see an example, launch a file server in this directory and go to `/example`
+to see an example of the plugin, launch a file server in this directory and go to the `/example` folder
 
 
