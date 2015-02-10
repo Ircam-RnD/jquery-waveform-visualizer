@@ -1,13 +1,13 @@
 jQuery waveform visualizer
 ===================================================
 
-_A simple jQuery plugin build around [`waves.js`](https://github.com/Ircam-RnD/waves), to visualize waveform and metadata._
+_A simple jQuery plugin build around [`waves.js`](https://github.com/Ircam-RnD/waves), to visualize waveform and segments along with an HTML5 audio player._
 
 __warning__: this plugin relies on the `webAudioAPI` (IE not supported)
 
 ## Install
 
-first load `jquery`, `waves.js` and the plugin in your page (at the end of the `body` tag)
+first load `jquery`, `waves.js` and the plugin files in your page, before closing the `body` tag is considered as a good practice.
 
 ```html
 <script src="/path/to/jquery.min.js"></script>
