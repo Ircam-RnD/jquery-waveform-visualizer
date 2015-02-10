@@ -23,25 +23,26 @@ In order to display the visualization, you need to insert the following tag:
 <div id="timeline" data-audio="/path/to/audio-file.wav" data-annotations="/path/to/annotations-file.json"></div>
 ```
 
-_the both attributes `data-audio` and `data-annotations` are mandatory_  
+__Both attributes `data-audio` and `data-annotations` are mandatory__  
 
-- `data-audio` value must be set to the path of your audio file (for cross browser compatibility, it's better to use a `.wav` file, multiple sources are not yet supported)
-- `data-annotations` value must be point to your annotation data file
+- `data-audio` value must be set to the path to your audio file 
+  _(for cross browser compatibility, it's better to use a `.wav` file, multiple sources are not yet supported)_
+- `data-annotations` attribute value must be the path to your annotation data file
 
-The data file must have the following format (values are in seconds):
+The data file is used to configure the segments on the visualization and must follow this convention:
 
 ```javascript
 [
   {
-    "start": 1.2,
-    "duration": 1
+    "start": 1.2, // in seconds
+    "duration": 1 // in seconds
   }, {
     // ...
   }
 ]
 ```
 
-If you want the module to have a specified size in your document, you can set it in css (defaults are: `width: 100%` and `height: 200px`):
+You can also set the size of the module in css (defaults are: `width: 100%` and `height: 200px`):
 
 ```css
 #timeline {
@@ -53,7 +54,9 @@ If you want the module to have a specified size in your document, you can set it
 Finally, initialize the plugin:
 
 ```javascript
-$('#timeline').waveformVisualizer();
+$(document).ready(function() {
+  $('#timeline').waveformVisualizer();
+});
 ```
 
 ## Configuration options
@@ -70,7 +73,7 @@ var defaults = {
 };
 ```
 
-these values can be overriden in the plugin initialization:
+These values can be overriden in the plugin initialization:
 
 ```javascript
 $('#timeline').waveformVisualizer({
@@ -81,6 +84,6 @@ $('#timeline').waveformVisualizer({
 
 ## Example
 
-to see an example of the plugin, launch a file server in this directory and go to the `/example` folder
+To see a live example of the plugin, launch a file server in this directory and go to the `/example` folder
 
 
