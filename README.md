@@ -23,9 +23,11 @@ In order to display the visualization, you need to insert the following tag:
 <div id="timeline" data-audio="/path/to/audio-file.wav" data-annotations="/path/to/annotations-file.json"></div>
 ``` 
 
-- `data-audio` __mandatory__ value must be set to the path to your audio file 
+- `data-audio` _(mandatory)_  
+  value must be set to the path to your audio file 
   _(for cross browser compatibility, it's better to use a `.wav` file, multiple sources are not yet supported)_
-- `data-annotations` __optionnal__ attribute value must be the path to your annotation data file
+- `data-annotations` _(optionnal)_  
+  attribute value must be the path to your annotation data file
 
 The data file is used to configure the segments on the visualization and must follow this convention:
 
