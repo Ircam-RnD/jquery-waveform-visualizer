@@ -24,8 +24,8 @@ In order to display the visualization, you need to insert the following tag:
 ``` 
 
 - `data-audio` _(mandatory)_  
-  value must be set to the path to your audio file 
-  _(for cross browser compatibility, it's better to use a `.wav` file, multiple sources are not yet supported)_
+  value must be set to the path to your audio file  
+  _for cross browser compatibility, use a `.wav` file, multiple sources are not yet supported_
 - `data-annotations` _(optionnal)_  
   attribute value must be the path to your annotation data file
 
