@@ -40,11 +40,13 @@
     var that = this;
     var audioBufferLoader = new waves.loaders.AudioBufferLoader();
 
-    $.when(
-      $.getJSON(this.annotationsPath),
-      audioBufferLoader.load(this.audioPath)
-    ).done(function(annotationsRes, audioPromise) {
-      that.annotations = annotationsRes[0];
+    var promises = [audioBufferLoader.load(this.audioPath)];
+    if (this.annotationsPath) {
+      promises.push($.getJSON(this.annotationsPath));
+    }
+
+    $.when.apply($, promises).done(function(audioPromise, annotationsRes) {
+      that.annotations = annotationsRes ? annotationsRes[0] : undefined;
 
       audioPromise.then(function(audioBuffer) {
         try {
@@ -109,16 +111,18 @@
       .sampleRate(this.audioBuffer.sampleRate)
       .color(this.config.waveformColor);
 
-    this.segmentLayer = waves.ui.segment()
-      .params({
-        interactions: this.config.segmentInteractions,
-        opacity: this.config.segmentOpacity
-      })
-      .data(this.annotations)
-      .color((function(d, v) {
-        if (v === undefined) { return d.color || this.config.segmentColor }
-        d.color = v;
-      }).bind(this));
+    if (this.annotations) {
+      this.segmentLayer = waves.ui.segment()
+        .params({
+          interactions: this.config.segmentInteractions,
+          opacity: this.config.segmentOpacity
+        })
+        .data(this.annotations)
+        .color((function(d, v) {
+          if (v === undefined) { return d.color || this.config.segmentColor }
+          d.color = v;
+        }).bind(this));
+    }
 
     this.cursorLayer = waves.ui.marker()
       .params({ displayHandle: false })
@@ -131,7 +135,9 @@
       .opacity(0.7);
 
     this.graph.add(this.waveformLayer);
-    this.graph.add(this.segmentLayer);
+    if (this.segmentLayer) {
+      this.graph.add(this.segmentLayer);
+    }
     this.graph.add(this.cursorLayer);
     this.graph.add(this.anchorLayer);
 
@@ -233,6 +239,7 @@
   };
 
   Plugin.prototype.bindSegmentEvents = function() {
+    if (!this.segmentLayer) { return; }
     var segment = this.segmentLayer;
     var d3 = waves.ui.timeline.d3;
     var player = this.$player[0];

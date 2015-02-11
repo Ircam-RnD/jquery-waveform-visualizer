@@ -9,24 +9,37 @@
     height: 100%;
   }
 
-  #timeline {
+  body {
+    padding-top: 80px;
+  }
+
+  .timeline {
     width: 800px;
     height: 220px;
     margin: 0 auto;
     position: relative;
-    top: 160px;
+    /* top: 160px; */
+  }
+
+  code {
+    display: block;
+    width: 800px;
+    margin: 20px auto;
   }
   </style>
 </head>
 <body>
-  <div id="timeline" data-audio="./data/drum-loop.wav" data-annotations="./data/annotations.json"></div>
+  <code>with annotations</code>
+  <div class="timeline" data-audio="./data/drum-loop.wav" data-annotations="./data/annotations.json"></div>
+  <code>without annotations</code>
+  <div class="timeline" data-audio="./data/drum-loop.wav"></div>
 
   <script src="./js/jquery-1.11.2.js"></script>
   <script src="./js/waves.min.js"></script>
   <script src="../jquery-waveform-visualizer.js"></script>
   <script>
     $(document).ready(function() {
-      $('#timeline').waveformVisualizer();
+      $('.timeline').waveformVisualizer();
     });
   </script>
 </body>
