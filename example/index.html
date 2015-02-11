@@ -13,6 +13,17 @@
     padding-top: 80px;
   }
 
+
+  code, h2 {
+    display: block;
+    width: 800px;
+    margin: 30px auto 20px;
+  }
+
+  h2 {
+    font-family: monospace;
+  }
+
   .timeline {
     width: 800px;
     height: 220px;
@@ -20,15 +31,10 @@
     position: relative;
     /* top: 160px; */
   }
-
-  code {
-    display: block;
-    width: 800px;
-    margin: 20px auto;
-  }
   </style>
 </head>
 <body>
+  <h2>jQuery waveform visualizer</h2>
   <code>with annotations</code>
   <div class="timeline" data-audio="./data/drum-loop.wav" data-annotations="./data/annotations.json"></div>
   <code>without annotations</code>

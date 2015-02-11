@@ -12,6 +12,7 @@
   };
 
   var defaultHeight = 200;
+  var d3 = waves.ui.timeline.d3;
 
   function Plugin($el, options) {
     this.config = $.extend({}, defaults, options);
@@ -98,8 +99,6 @@
   // create components
   // -----------------------------------
   Plugin.prototype.createTimeline = function() {
-    var d3 = waves.ui.timeline.d3;
-
     // create graph
     this.graph = waves.ui.timeline()
       .width(this.width)
@@ -145,8 +144,6 @@
   };
 
   Plugin.prototype.createAxis = function() {
-    var d3 = waves.ui.timeline.d3;
-
     var zoomerSvg = d3.select(this.$axis[0]).append('svg')
       .attr('width', this.width)
       .attr('height', 30)
@@ -240,11 +237,10 @@
 
   Plugin.prototype.bindSegmentEvents = function() {
     if (!this.segmentLayer) { return; }
-    var segment = this.segmentLayer;
-    var d3 = waves.ui.timeline.d3;
     var player = this.$player[0];
 
-    segment.on('mousedown', function(item, e) {
+    this.segmentLayer.on('mousedown', function(item, e) {
+      if (!item) { return; }
       var datum = d3.select(item).datum();
       player.currentTime = datum.start;
       player.play();
