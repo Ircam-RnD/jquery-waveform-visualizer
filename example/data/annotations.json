@@ -1,9 +1,9 @@
 [
   {
-    "start": 1.2,
+    "start": 0.4,
     "duration": 1
   }, {
-    "start": 3,
-    "duration": 1
+    "start": 2,
+    "duration": 0.4
   }
 ]
